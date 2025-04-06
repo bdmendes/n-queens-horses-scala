@@ -33,27 +33,19 @@ case class Board(squares: Vector[Option[Piece]]) {
     }.toList
   }
 
-  lazy val hash = toStr.mkString
+  lazy val hash: String = toStr.mkString
 
-  lazy val size = math.sqrt(squares.size).toInt
+  lazy val size: Int = math.sqrt(squares.size).toInt
 
-  def at(position: FromTopLeftPosition) = {
+  def at(position: FromTopLeftPosition): Option[Piece] = {
     squares(position.y * size + position.x)
   }
 
-  def set(pieceEntry: PieceEntry): Board = {
-    val (position, piece) = pieceEntry
-    Board(
-      squares.updated(
-        position.y * size + position.x,
-        Some(piece)
-      )
-    )
-  }
+  def set(pieceEntry: PieceEntry): Board = ???
 }
 
 object Board {
-  def empty(size: Int) = {
+  def empty(size: Int): Board = {
     val l = Vector.fill(size * size)(None)
     Board(l)
   }
