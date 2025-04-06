@@ -9,7 +9,7 @@ enum Piece {
 
 type PieceEntry = (FromTopLeftPosition, Piece)
 
-case class Board(val squares: Vector[Option[Piece]]) {
+case class Board(squares: Vector[Option[Piece]]) {
   lazy val pieces: Vector[PieceEntry] = {
     (0 until size * size).flatMap { i =>
       squares(i).map { piece =>

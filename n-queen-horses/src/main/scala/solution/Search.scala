@@ -16,7 +16,7 @@ def attacks(entry1: PieceEntry, entry2: PieceEntry) = {
 }
 
 extension (board: Board) {
-  def isValid = {
+  def isValid: Boolean = {
     val pieces = board.pieces
     pieces.forall { entry =>
       pieces.forall { other =>
@@ -25,10 +25,10 @@ extension (board: Board) {
     }
   }
 
-  def isSafe(toPlace: PieceEntry) = {
+  def isSafe(toPlace: PieceEntry): Boolean = {
     val pieces = board.pieces
     pieces.forall { entry =>
-      entry == toPlace || (!attacks(entry, toPlace) && !attacks(toPlace, entry))
+      !attacks(entry, toPlace) && !attacks(toPlace, entry)
     }
   }
 }
@@ -54,7 +54,7 @@ object Search {
 
       val emptyPositions = possiblePositions
         .filter { position =>
-          !board.at(position).isDefined && board.isSafe((position, put))
+          board.at(position).isEmpty && board.isSafe((position, put))
         }
 
       emptyPositions.flatMap { position =>
