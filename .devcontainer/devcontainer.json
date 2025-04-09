@@ -1,0 +1,18 @@
+// For format details, see https://aka.ms/devcontainer.json.
+{
+	"name": "Scala",
+	"image": "sbtscala/scala-sbt:eclipse-temurin-jammy-22_36_1.10.1_3.3.3",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"scala-lang.scala",
+				"scalameta.metals"
+			]
+		}
+	},
+
+	// Comment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "sbtuser"
+}
